@@ -1,26 +1,85 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { forwardRef, Suspense, useEffect, lazy } from "react";
+import MuiAlert from "@mui/material/Alert";
+import {
+  AlertColor,
+  AlertProps,
+  Backdrop,
+  CircularProgress,
+  Snackbar,
+} from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { setMessage } from "./redux/uxSlice";
+import { RootState } from "./redux/store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const Home = lazy(() => import("./pages/Home/Home"));
+
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const App = () => {
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const { message, loading: uxLoading } = useSelector(
+    (state: RootState) => state.ux
   );
-}
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    dispatch(setMessage({ type: "info", text: null }));
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
+    <>
+      {message?.text && (
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={Boolean(message)}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            severity={message?.type as AlertColor | undefined}
+            sx={{ width: "100%" }}
+          >
+            {message?.text}
+          </Alert>
+        </Snackbar>
+      )}
+
+      <Backdrop sx={{ color: "#fff", zIndex: 10 }} open={uxLoading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
+      <Suspense
+        fallback={
+          <Backdrop sx={{ color: "#fff", zIndex: 10 }} open>
+            <span style={{ marginRight: "20px" }}>Please Wait...</span>
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Suspense>
+    </>
+  );
+};
 
 export default App;
