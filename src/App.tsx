@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setMessage } from "./redux/uxSlice";
 import { RootState } from "./redux/store";
+import Login from "./pages/Login/Login";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 
@@ -76,6 +77,8 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Suspense>
     </>
