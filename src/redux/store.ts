@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import userSlice from "./userSlice";
 import uxSlice from "./uxSlice";
 
 const persistConfig = {
@@ -20,6 +21,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  user: userSlice,
   ux: uxSlice,
 });
 
