@@ -1,0 +1,91 @@
+.Container {
+  height: 40px;
+  padding: 10px 20px;
+  background-color: teal;
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: 380px) {
+    padding: 10px;
+  }
+}
+
+.Left {
+  display: flex;
+  align-items: center;
+}
+
+.Logo {
+  font-weight: 600;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+}
+
+.Right {
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.MenuContainer {
+  display: flex;
+
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.Item {
+  cursor: pointer;
+  margin-left: 15px;
+  white-space: nowrap;
+  color: #fff;
+  display: flex;
+  align-items: center;
+
+  .Title {
+    margin-right: 5px;
+    display: inline-block;
+
+    @media only screen and (max-width: 380px) {
+      display: none;
+    }
+  }
+
+  &:hover {
+    color: lightgrey;
+  }
+}
+
+.Menu {
+  display: none !important;
+  color: #fff;
+  margin-left: 15px;
+  font-size: 26px;
+  cursor: pointer;
+
+  @media only screen and (max-width: 800px) {
+    display: block !important;
+  }
+
+  @media only screen and (max-width: 380px) {
+    margin-left: 10px;
+  }
+}
+
+.Selected {
+  color: gold;
+}
