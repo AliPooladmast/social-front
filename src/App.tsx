@@ -11,10 +11,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setMessage } from "./redux/uxSlice";
 import { RootState } from "./redux/store";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
 
-const Home = lazy(() => import("./pages/Home/Home"));
+const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Register/Register"));
+const JobList = lazy(() => import("./pages/JobList/JobList"));
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -77,7 +77,7 @@ const App = () => {
         }
       >
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<JobList />} />
 
           <Route path="/login" element={<Login />} />
 
