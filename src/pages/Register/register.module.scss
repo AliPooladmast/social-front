@@ -1,0 +1,67 @@
+.Container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("register-background.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Wrapper {
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+
+  @media only screen and (max-width: 600px) {
+    width: 75%;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  input {
+    flex: 1;
+    min-width: 40%;
+    margin: 20px 10px 0 0;
+    padding: 10px;
+  }
+
+  span {
+    font-size: 12px;
+    margin: 20px 0;
+  }
+
+  button {
+    min-width: 100px;
+    width: 40%;
+    padding: 15px 20px;
+    border: none;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(0, 155, 155);
+    }
+    &:active {
+      background-color: rgb(0, 194, 194);
+    }
+  }
+}
+
+.Error {
+  color: red;
+  margin-top: 10px;
+}
