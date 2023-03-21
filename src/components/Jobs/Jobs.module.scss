@@ -1,0 +1,15 @@
+.Container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 240px);
+  gap: 20px;
+  justify-content: center;
+}
+
+.Pagination {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
