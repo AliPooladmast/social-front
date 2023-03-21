@@ -1,0 +1,126 @@
+@use "src/styles";
+
+.Title {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.FilterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px 15px 30px;
+  position: sticky;
+  top: 60px;
+  z-index: 4;
+  background-color: #f7fafa;
+  box-shadow: styles.$shadow-light;
+
+  .FilterTitle {
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-right: 5px;
+
+    @media only screen and (max-width: 1000px) {
+      margin-bottom: 5px;
+      margin-right: 0;
+    }
+  }
+
+  .FilterSelect {
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: 0.1s;
+    cursor: pointer;
+
+    &--Industry {
+      @extend .FilterSelect;
+      margin-left: 10px;
+    }
+
+    &:focus {
+      box-shadow: styles.$shadow-light;
+    }
+
+    option {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+
+.FilterItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px 10px 10px;
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
+.JobFiltersContainer {
+  display: flex;
+  align-items: center;
+}
+
+.SearchContainer {
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: 0.1s;
+
+  &:focus-within {
+    box-shadow: styles.$shadow-light;
+  }
+}
+
+.Input {
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  width: 15vw;
+  min-width: 150px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Search {
+  color: grey;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.Reset {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: darkblue;
+  cursor: pointer;
+
+  .Cancel {
+    font-size: 16px !important;
+  }
+
+  span {
+    font-size: 16px;
+    margin-left: 3px;
+  }
+}
+
+.Jobs {
+  margin: 30px 0;
+  padding: 0 30px;
+  min-height: calc(100vh - 200px);
+}
