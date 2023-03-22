@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { forwardRef, Suspense, useEffect, lazy } from "react";
 import MuiAlert from "@mui/material/Alert";
 import {
@@ -16,6 +16,7 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const Register = lazy(() => import("./pages/Register/Register"));
 const JobList = lazy(() => import("./pages/JobList/JobList"));
 const Job = lazy(() => import("./pages/Job/Job"));
+const User = lazy(() => import("./pages/User/User"));
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -30,6 +31,7 @@ const App = () => {
   const { message, loading: uxLoading } = useSelector(
     (state: RootState) => state.ux
   );
+  const { currentUser } = useSelector((state: RootState) => state.user);
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -87,6 +89,11 @@ const App = () => {
           <Route path="/job" element={<Job />}>
             <Route path=":id" element={<Job />} />
           </Route>
+
+          <Route
+            path="/user"
+            element={currentUser ? <User /> : <Navigate to="/" replace />}
+          />
         </Routes>
       </Suspense>
     </>
