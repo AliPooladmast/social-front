@@ -15,6 +15,7 @@ import { RootState } from "./redux/store";
 const Login = lazy(() => import("./pages/Login/Login"));
 const Register = lazy(() => import("./pages/Register/Register"));
 const JobList = lazy(() => import("./pages/JobList/JobList"));
+const Job = lazy(() => import("./pages/Job/Job"));
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -82,6 +83,10 @@ const App = () => {
           <Route path="/login" element={<Login />} />
 
           <Route path="/register" element={<Register />} />
+
+          <Route path="/job" element={<Job />}>
+            <Route path=":id" element={<Job />} />
+          </Route>
         </Routes>
       </Suspense>
     </>
