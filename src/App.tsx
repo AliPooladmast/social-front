@@ -17,6 +17,9 @@ const Register = lazy(() => import("./pages/Register/Register"));
 const JobList = lazy(() => import("./pages/JobList/JobList"));
 const Job = lazy(() => import("./pages/Job/Job"));
 const User = lazy(() => import("./pages/User/User"));
+const ApplicationList = lazy(
+  () => import("./pages/ApplicationList/ApplicationList")
+);
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -93,6 +96,13 @@ const App = () => {
           <Route
             path="/user"
             element={currentUser ? <User /> : <Navigate to="/" replace />}
+          />
+
+          <Route
+            path="/applications"
+            element={
+              currentUser ? <ApplicationList /> : <Navigate to="/" replace />
+            }
           />
         </Routes>
       </Suspense>
