@@ -29,9 +29,9 @@ const PageMenu = ({
     <>
       <div
         className={`${ItemClassName} ${
-          location.pathname === "/jobs" ? SelectedClassName : ""
+          location.pathname === "/" ? SelectedClassName : ""
         }`}
-        onClick={() => navigate("/jobs")}
+        onClick={() => navigate("/")}
       >
         <span className={TitlesClassName}>Jobs</span>
         <Work />
