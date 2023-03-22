@@ -78,10 +78,10 @@ export const editUser = async (dispatch, userId, user) => {
 };
 
 //Application API Calls
-export const getApplications = async (dispatch, userId) => {
+export const getApplications = async (dispatch) => {
   dispatch(applicationStart());
   try {
-    const res = await userRequest.get("applications/find/" + userId);
+    const res = await userRequest.get("applications/user");
     dispatch(getApplicationSuccess(res?.data));
   } catch (err) {
     dispatch(applicationFailure());
